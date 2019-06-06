@@ -3,27 +3,26 @@ import statistics
 import webbrowser
 import matplotlib.pyplot as plt
 
-# Toma una lista "f" fitness, y devuelve un índice de un elemento de esa
-# lista usando el método de la ruleta.
-def ruleta(f):
-    numero = random.uniform(0,1)
-    fitness_coincidente = 0.0
-    for i in range(10):
-        if i >= 9:
-            return i
-        if numero > fitness_coincidente:
-            fitness_coincidente += f[i]
-        else:
-            return i
+def toint(n):
+    """Convierte el número binario recibido en el argumento a entero. El número binario tiene que estar en forma de lista de dígitos."""
+    return int(''.join(n), 2)
 
-# Completa los ceros por delante de una lista argumento para que tenga 30 dígitos
+def ruleta(f):
+    """Toma una lista "f" fitness, y devuelve un índice de un elemento de esa lista usando el método de la ruleta."""
+    resultado = []
+    for i in range(len(f)): # Itera sobre cada elemento del argumento.
+        for j in range (int(f[i]*100)): # Se repite la cantidad de veces correspondiente al fitness,
+            resultado.append(i) # agregando el índice a la lista resultado esa cantidad de veces.
+    return resultado[random.randint(0, len(resultado) - 1)] # Devuelve un elemento aleatorio.
+
 def completar_ceros(b):
+    """Completa los ceros por delante de una lista argumento para que tenga 30 dígitos"""
     for i in range(30 - len(b)):
         b.insert(0, '0')
     return b
 
-# Hay una probabilidad "prob" de que se haga el crossover entre "a" y "b" en el punto "x" en la población "p"
 def crossover(p, a, b, x, prob):
+    # """Hay una probabilidad "prob" de que se haga el crossover entre "a" y "b" en el punto "x" en la población "p""""
     if random.randint(0, 100) < prob*100:
         # pdb.set_trace()
         p.append(a[x:] + b[:x])
@@ -34,14 +33,18 @@ def crossover(p, a, b, x, prob):
         except ValueError:
             pass
 
-# Hay una probabilidad "prob" de que exista una mutación en un bit aleatorio del cromosoma
 def mutar(cromosoma, prob):
+    """Hay una probabilidad "prob" de que exista una mutación en un bit aleatorio del cromosoma"""
     if random.randint(0, 100) < prob*100:
         bit_cambiado = random.randint(0,29)
         cromosoma[bit_cambiado] = str(abs(int(cromosoma[bit_cambiado]) - 1))
 
-# Crea un archivo HTML que muestra la información que se pide.
+def elitismo(f):
+    """Devuelve el índice del cromosoma de mayor fitness de la lista f"""
+    return max(f)
+
 def mostrar_info(cromosoma_final, maximos, minimos, promedios, prob_cross, prob_mut):
+    """Crea un archivo HTML que muestra la información que se pide."""
     f = open('resultados.html', 'w')
 
     html_inicial = """<!DOCTYPE html>
