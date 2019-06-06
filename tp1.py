@@ -42,37 +42,37 @@ if args.mutacion:
 
 # Genera población inicial y la guarda
 for i in range(n):
-    cromosoma = []
-    for j in range(30):
-        cromosoma.append(str(random.randint(0, 1)))
-    pob_bin.append(cromosoma)
-    poblacion.append(toint(cromosoma))
-    f_obj.append((toint(cromosoma)/(2**30 - 1))**2)
-    pdb.set_trace()
-    # pdb.set_trace()
+	cromosoma = []
+	for j in range(30):
+		cromosoma.append(str(random.randint(0, 1)))
+	pob_bin.append(cromosoma)
+	#pdb.set_trace()
+	poblacion.append(toint(cromosoma))
+	f_obj.append((toint(cromosoma)/((2**30) - 1))**2)
+    #pdb.set_trace()
     # x = random.randint(0, (2**30) - 1)
     # poblacion.append(x) # como números decimales
     # pob_bin.append(completar_ceros((list(str(bin(x))))[2:])) # y como números binarios de 30 dígitos.
     # f_obj.append((x/(2**30 - 1))**2) # Llena la tabla de función objetivo.
 
-pdb.set_trace()
+#pdb.set_trace()
 # Genera resultados de función fitness.
 for i in range(n):
     fitness.append(f_obj[i] / sum(f_obj))
 
-pdb.set_trace()
+#pdb.set_trace()
 
 # Bucle de 200 iteraciones para cada iteración del algoritmo.
 for generacion in range(200):
-    pdb.set_trace()
+    #pdb.set_trace()
     resultado_ruleta = [] # Lista que guarda los padres que resultarán de la selección.
     for i in range(n):
         resultado_ruleta.append(pob_bin[ruleta(fitness)])
-    
+
     pdb.set_trace()
- 
+
     cromosoma_elite = pob_bin[fitness.index(max(fitness))] # Buscar y guardar cromosoma elite en la función elite
-    
+
     # Crossover
     for i in range(0, 9, 2):
         padre = resultado_ruleta[i]
@@ -86,8 +86,8 @@ for generacion in range(200):
 
     pob_bin.append(cromosoma_elite) # Agregar cromosoma elite a la población,
     pob_bin.remove(pob_bin[fitness.index(min(fitness))]) # y remover cromosoma de menor fitness.
-    
-    pdb.set_trace()
+
+    #pdb.set_trace()
 
     x_maximos.append(max(f_obj))
     x_minimos.append(min(f_obj))
@@ -97,7 +97,7 @@ for generacion in range(200):
     poblacion = []
     f_obj = []
     fitness = []
-    
+
     # Generar la nueva población en números enteros
     for i in range(n):
         poblacion.append(int(''.join(pob_bin[i]), 2))
