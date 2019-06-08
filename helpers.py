@@ -2,6 +2,7 @@ import random
 import statistics
 import webbrowser
 import matplotlib.pyplot as plt
+import pdb
 
 def toint(n):
     """Convierte el número binario recibido en el argumento a entero. El número binario tiene que estar en forma de lista de dígitos."""
@@ -23,13 +24,15 @@ def completar_ceros(b):
 
 def crossover(p, a, b, x, prob):
     # """Hay una probabilidad "prob" de que se haga el crossover entre "a" y "b" en el punto "x" en la población "p""""
+    pdb.set_trace()
     if random.randint(0, 100) < prob*100:
-        # pdb.set_trace()
+        #pdb.set_trace()
         p.append(a[x:] + b[:x])
         p.append(b[x:] + a[:x])
         try:
             p.remove(a)
             p.remove(b)
+            pdb.set_trace()
         except ValueError:
             pass
 
@@ -77,7 +80,7 @@ def mostrar_info(cromosoma_final, maximos, minimos, promedios, prob_cross, prob_
             <th>Promedios</th>
         </tr>
         """
-    
+
     f.write(html_inicial)
     f.write(cromosoma_maximo)
     f.write(valores)
@@ -128,7 +131,7 @@ def mostrar_info(cromosoma_final, maximos, minimos, promedios, prob_cross, prob_
     plt.autoscale(False)
     plt.savefig('graficos/maximos.svg', bbox_inches='tight')
     plt.clf()
-    
+
 
     plt.plot(range(200), minimos)
     plt.xlim(0, 200)
