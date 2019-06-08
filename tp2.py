@@ -11,9 +11,23 @@
 
 from clases.cromosoma import Cromosoma
 
-poblacion = []
 n = 10
+poblacion = []
+f_obj = []
+fitness = []
 
-# Genera la población inicial
+# Genera la población inicial.
 for i in range(n):
     poblacion.append(Cromosoma())
+
+# Genera los resultados de la función objetivo.
+for i in range(n):
+    f_obj.append(poblacion[i].f_obj())
+
+# Genera los resultados de la función fitness.
+for i in range(n):
+    fitness.append(f_obj[i]/sum(f_obj))
+
+for i in range(n):
+    print(poblacion[i].entero(), '\t', f_obj[i], '\t', fitness[i])
+print('\t\t', sum(f_obj), '\t', sum(fitness))
