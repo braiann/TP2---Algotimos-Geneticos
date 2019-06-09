@@ -12,6 +12,7 @@
 from clases.cromosoma import Cromosoma
 from helpers import ruleta, crossover
 import random
+import pdb
 
 n = 10
 poblacion = []
@@ -42,6 +43,8 @@ resultado_ruleta = []
 for j in range(n):
     resultado_ruleta.append(ruleta(fitness))
 print(resultado_ruleta)
+
 for j in range(0, 9, 2):
+    pdb.set_trace()
     crossover(nueva_poblacion, poblacion[resultado_ruleta[j]].binario, poblacion[resultado_ruleta[j+1]].binario, random.randint(1, 29), prob_cross)
     print(nueva_poblacion)
