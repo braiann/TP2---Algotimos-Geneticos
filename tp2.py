@@ -1,6 +1,6 @@
 # TODO:
 ## [HECHO] Generar una población inicial.
-## Computar la función de evaluación de cada individuo.
+## [HECHO] Computar la función de evaluación de cada individuo.
 ## Repetir 200 veces (producir nueva generación en cada iteración):
 #### Para cada miembro de la población (ciclo reproductivo):
 ###### Selección: Seleccionar dos individuos de la anterior generación para el cruce.
