@@ -10,7 +10,8 @@
 ###### Insertar los dos descendientes mutados en la nueva generación.
 
 from clases.cromosoma import Cromosoma
-from helpers import ruleta
+from helpers import ruleta, crossover
+import random
 
 n = 10
 poblacion = []
@@ -36,9 +37,11 @@ for i in range(n):
     print(poblacion[i].binario_lindo, poblacion[i].entero(), '\t', f_obj[i], '\t', fitness[i])
 print('\t\t', sum(f_obj), '\t', sum(fitness))
 
-for i in range(200):
-    resultado_ruleta = []
-    for j in range(n):
-        resultado_ruleta.append(ruleta(fitness))
-    for j in range(0, 8, 2)
-        crossover(nueva_poblacion, poblacion[resultado_ruleta[j]], poblacion[resultado_ruleta[j+1]], random.randint(1,29), prob_cross)
+#for i in range(200):
+resultado_ruleta = []
+for j in range(n):
+    resultado_ruleta.append(ruleta(fitness))
+print(resultado_ruleta)
+for j in range(0, 9, 2):
+    crossover(nueva_poblacion, poblacion[resultado_ruleta[j]].binario, poblacion[resultado_ruleta[j+1]].binario, random.randint(1, 29), prob_cross)
+    print(nueva_poblacion)

@@ -5,8 +5,8 @@ class Cromosoma:
         self.binario = []
         self.binario_lindo = []
         for i in range(30): # Llena la variable binario con una lista de 30 dígitos binarios aleatorios.
-            self.binario.append(str(random.randint(0,1)))
-        self.binario_lindo[] = ''.join(map(str, self.binario))
+            self.binario.append(str((random.randint(0,1))))
+        self.binario_lindo = ''.join(map(str, self.binario))        
 
     def entero(self):
         """Devuelve la variable binaria convertida en entero."""

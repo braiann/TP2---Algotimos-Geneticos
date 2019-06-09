@@ -24,18 +24,22 @@ def completar_ceros(b):
 
 def crossover(p, a, b, x, prob):
     # """Hay una probabilidad "prob" de que se haga el crossover entre "a" y "b" en el punto "x" en la población "p""""
-    pdb.set_trace()
     h1 = []
     h2 = []
+    print(x)
     if random.randint(0, 100) < prob*100:
         for i in range(x):
             h1.append(a[i])
             h2.append(b[i])
-
         for i in range(30-x):
             h1.append(b[i])
             h2.append(a[i])
-    p.append(h1, h2)
+        p.append(h1)
+        p.append(h2)
+        print(a, b, h1, h2)
+    else:
+        p.append(a)
+        p.append(b)
         #try:
             #p.remove(a)
             #p.remove(b)
