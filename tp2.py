@@ -36,7 +36,7 @@ for i in range(n):
 
 for i in range(n):
     print(poblacion[i].binario_lindo, poblacion[i].entero(), '\t', f_obj[i], '\t', fitness[i])
-print('\t\t', sum(f_obj), '\t', sum(fitness))
+print('\t\t\t\t\t\t', sum(f_obj), '\t', sum(fitness))
 
 #for i in range(200):
 resultado_ruleta = []
@@ -46,5 +46,5 @@ print(resultado_ruleta)
 
 for j in range(0, 9, 2):
     pdb.set_trace()
-    crossover(nueva_poblacion, poblacion[resultado_ruleta[j]].binario, poblacion[resultado_ruleta[j+1]].binario, random.randint(1, 29), prob_cross)
+    crossover(nueva_poblacion, poblacion[resultado_ruleta[j]].binario, poblacion[resultado_ruleta[j+1]].binario, random.randint(1, 28), prob_cross)
     print(nueva_poblacion)
