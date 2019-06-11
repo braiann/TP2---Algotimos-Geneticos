@@ -45,6 +45,6 @@ for j in range(n):
 print(resultado_ruleta)
 
 for j in range(0, 9, 2):
-    pdb.set_trace()
     crossover(nueva_poblacion, poblacion[resultado_ruleta[j]].binario, poblacion[resultado_ruleta[j+1]].binario, random.randint(1, 28), prob_cross)
-    print(nueva_poblacion)
+
+#for j in range(n)
